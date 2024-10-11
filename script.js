@@ -39,28 +39,34 @@ ctx.fillRect(
   sliderRightHeight
 );
 
-
-
 ctx.beginPath();
-ctx.strokeStyle = '#00FF00';
+ctx.strokeStyle = "#00FF00";
 ctx.arc(WIDTH * 0.5, HEIGHT * 0.5, BALL_RADIUS, 0, 2 * Math.PI);
-ctx.fillStyle = '#00FF00'
-ctx.fill()
+ctx.fillStyle = "#00FF00";
+ctx.fill();
 ctx.closePath();
-
 
 /**
  * @param {Date} initialTime - preview function call date
- * 
+ *
  * @returns {void}
  */
+let showFps = false;
 const animation = (initialTime) => {
-    const endTime = new Date();
-    const nextFrameTimeDifference = endTime - initialTime;
-    console.log(nextFrameTimeDifference);
-    const startTime = new Date();
-    console.log('new frame dropped')
-    window.requestAnimationFrame(() => setTimeout(() => animation(startTime), 200));
-}
+  const endTime = new Date();
+  const nextFrameTimeDifference = endTime - initialTime;
+  console.log(nextFrameTimeDifference);
+  const startTime = new Date();
+  console.log("new frame dropped");
+  if (showFps)
+    ctx.strokeText(Math.floor(1000 / (nextFrameTimeDifference || 1)), 10, 10);
 
-// animation(new Date());
+  window.requestAnimationFrame(() =>
+    setTimeout(() => {
+      if (showFps) ctx.clearRect(0, 0, 120, 30);
+      animation(startTime);
+    }, 59 / 1000)
+  );
+};
+
+animation(new Date());
