@@ -3,8 +3,12 @@
  * */
 
 const canvas = document.getElementById("canvas");
+
 const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
+const BALL_RADIUS = 10;
+const LEFTPAD = 30;
+const RIGHTPAD = 30;
 
 /**
  * @type {CanvasRenderingContext2D}
@@ -18,7 +22,6 @@ let sliderLeftHeight = 50;
 let sliderRightWidth = 10;
 let sliderRightHeight = 50;
 
-const LEFTPAD = 30;
 ctx.fillStyle = "#FF0000";
 // ctx.fillRect(30, 375, 40, 425)
 ctx.fillRect(
@@ -28,7 +31,6 @@ ctx.fillRect(
   sliderLeftHeight
 );
 
-const RIGHTPAD = 30;
 ctx.fillStyle = "#FF0000";
 ctx.fillRect(
   WIDTH - RIGHTPAD - sliderRightWidth,
@@ -36,3 +38,12 @@ ctx.fillRect(
   sliderRightWidth,
   sliderRightHeight
 );
+
+
+
+ctx.beginPath();
+ctx.strokeStyle = '#00FF00';
+ctx.arc(WIDTH * 0.5, HEIGHT * 0.5, BALL_RADIUS, 0, 2 * Math.PI);
+ctx.fillStyle = '#00FF00'
+ctx.fill()
+ctx.closePath();
