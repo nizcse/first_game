@@ -3,8 +3,11 @@
  * */
 
 const canvas = document.getElementById('canvas');
-const WIDTH = canvas.width;
-const HEIGHT = canvas.height;
+const WIDTH = 400;
+const HEIGHT = 400;
+
+canvas.width = WIDTH;
+canvas.HEIGHT = HEIGHT;
 
 /**
  * @type {CanvasRenderingContext2D}
@@ -18,5 +21,5 @@ const sliderHeight = 50;
 
 const LEFTPAD = 30
 ctx.fillStyle = '#FF0000'
-ctx.fillRect(30, 375, 40, 425)
-// ctx.fillRect(LEFTPAD, (HEIGHT * 0.5) - (sliderHeight * 0.5), LEFTPAD + sliderWidth, (HEIGHT * 0.5) + (sliderHeight * 0.5))
+// ctx.fillRect(30, 375, sliderWidth, sliderHeight)
+ctx.fillRect(LEFTPAD, HEIGHT * 0.5 - sliderHeight * 0.5, sliderWidth, sliderHeight * 0.5)
