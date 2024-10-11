@@ -6,7 +6,7 @@ const canvas = document.getElementById("canvas");
 
 const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
-const BALL_RADIUS = 10;
+const BALL_RADIUS = 7.5;
 const LEFTPAD = 30;
 const RIGHTPAD = 30;
 
@@ -47,3 +47,20 @@ ctx.arc(WIDTH * 0.5, HEIGHT * 0.5, BALL_RADIUS, 0, 2 * Math.PI);
 ctx.fillStyle = '#00FF00'
 ctx.fill()
 ctx.closePath();
+
+
+/**
+ * @param {Date} initialTime - preview function call date
+ * 
+ * @returns {void}
+ */
+const animation = (initialTime) => {
+    const endTime = new Date();
+    const nextFrameTimeDifference = endTime - initialTime;
+    console.log(nextFrameTimeDifference);
+    const startTime = new Date();
+    console.log('new frame dropped')
+    window.requestAnimationFrame(() => setTimeout(() => animation(startTime), 200));
+}
+
+// animation(new Date());
